@@ -1,5 +1,6 @@
 # wilddog-typescript
 
+# deprecated wilddog2.2 后会自带typescript的支持
 
 typescript .d.ts
 
