@@ -42,7 +42,7 @@ declare namespace wilddog {
     providerId: string;
     uid: string;
     delete(onComplete?: (a: Error) => any): wilddog.Promise<any>;
-    getToken(): wilddog.Promise<any>;
+    getToken(): string;
     link(credential: wilddog.auth.Credential, onComplete?: (a: Error) => any): wilddog.Promise<any>;
     linkWithPopup(provider: wilddog.auth.Provider, onComplete?: (a: Error) => any): wilddog.Promise<any>;
     linkWithRedirect(provider: wilddog.auth.Provider, onComplete?: (a: Error) => any):
