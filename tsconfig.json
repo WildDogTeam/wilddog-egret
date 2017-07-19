@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outFile": "bin/wilddog.d.ts",
+        "allowJs": true
+    },
+    "files": [
+        "src/wilddog-web-all.js"
+    ]
+}
