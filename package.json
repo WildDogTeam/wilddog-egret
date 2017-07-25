@@ -1,12 +1,4 @@
 {
-	"name": "egret",
-	"version": "3.2.5",
-	"modules": [
-		{
-			"name": "wilddog",
-			"description": "wilddog",
-			"files": ["wilddog-web-all.js","wilddog.d.ts"],
-			"root": "src"
-		}
-	]
+	"name": "wilddog",
+	"typings": "src/wilddog.d.ts"
 }
