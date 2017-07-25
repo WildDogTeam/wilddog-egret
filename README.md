@@ -2,21 +2,22 @@
 
 ## 在白鹭引擎中使用野狗sdk
 
-在白鹭中使用外部的第三方lib需要做一些额外的工作，参考文档：http://edn.egret.com/cn/docs/page/172
+在白鹭中使用外部的第三方lib需要做一些额外的工作，参考文档：['构建第三方库'](http://developer.egret.com/cn/2d/projectConfig/libraryProject),
+['使用第三方库'](http://developer.egret.com/cn/github/egret-docs/extension/threes/instructions/index.html)
 
 下面介绍如何在白鹭引擎中引入野狗。
 
-**第1步** 
+**第1步**
 
- 将此项目clone到本地某个路径下,下文用`<path-to-wildegret>` 代替这个路径
- 
-**第2步** 
+ 将此项目clone到本地某个路径下,下文用 `<path-to-wildegret>` 代替这个路径
 
- 在此项目中执行 `egret build`，可以看到会在 bin 下生成几个文件
+**第2步**
 
-**第3步** 
+ 此项目尚未进行构建。在项目中执行 `egret build`，可以看到会在 bin 下生成几个文件
 
- 在需要引入野狗的egret项目（下文用目标项目代替）中修改`egretProperties.json`,在modules 下面增加一项 
+**第3步**
+
+ 在需要引入野狗的egret项目（下文用目标项目代替）中修改 `egretProperties.json` ,在 modules 下面增加一项
 
 ```json
 {
@@ -25,19 +26,18 @@
 }
 ```
 
-**第4步** 
+**第4步**
 
-把wilddog.d.ts 复制到目标项目的 `src` 目录下，并稍做修改，如果最后一行是 `export = wilddog;` 把这行注释掉或删除掉，下文会解释原因。
+最后命令行里使用 egret build -e 命令，egret 引擎会把 wilddog 库引用进来，在 libs/modules 路径下，你会看到 wilddog 这个库。
 
-**第5步** 
+**第5步**
 
 使用野狗进行数据同步
 比如：
 
-
-```ts
-//Main.ts
-//...
+```js
+// index.html
+// 在 loadScript 回调中填入代码
 wilddog.initializeApp({
     syncURL: "https://<appid>.wilddogio.com",
     authDomain:"<appid>.wilddog.com"
@@ -49,6 +49,17 @@ wilddoog.sync().ref().on('child_added',function(snapshot){
 //...
 ```
 
-## 说明
-
-需要删除`export = wilddog;` 的原因：白鹭并不支持commonjs以及es6模块化的语法的语法。
+或者手动添加 script 标签，
+```html
+<script egret='lib' src="libs/modules/wilddog/wilddog.js" src-release='libs/modules/wilddog/wilddog.min.js'></script>
+<script>
+// 此时不需等 loadScript 执行后再调用 wilddog
+wilddog.initializeApp({
+    syncURL: "https://<appid>.wilddogio.com",
+    authDomain:"<appid>.wilddog.com"
+})
+wilddoog.sync().ref().on('child_added',function(snapshot){
+    console.log(snapshot.val())
+})
+</script>
+```
