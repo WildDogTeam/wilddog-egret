@@ -35,6 +35,8 @@
 使用野狗进行数据同步
 比如：
 
+#### 在 index.html 中开发
+
 ```js
 // index.html
 // 在 loadScript 回调中填入代码
@@ -63,3 +65,7 @@ wilddoog.sync().ref().on('child_added',function(snapshot){
 })
 </script>
 ```
+
+#### 在 Main.ts 中开发
+
+手动将 libs/modules/wilddog/wilddog.d.ts 移到 src 目录下
