@@ -69,3 +69,4 @@ wilddoog.sync().ref().on('child_added',function(snapshot){
 #### 在 Main.ts 中开发
 
 手动将 libs/modules/wilddog/wilddog.d.ts 移到 src 目录下
+删除最后的export = wilddog;
